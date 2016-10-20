@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="RestaurantMenuSearch" lang="en">
+  <head>
+    <title>Narrow Down Your Menu Choice</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/bootstrap.min.css" />
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta charset="utf-8" />
+  </head>
+
+  <body ng-controller="MainController as mainController">
+    <div class="container">
+      <div class="row">
+        <h1>Narrow Down Your Chinese Menu Choice</h1><br />
+      </div>
+
+      <div class="row">
+          <div class="form-group">
+            <input type="text" placeholder="Search term" class="form-control" ng-model="mainController.searchDescription" />
+            <span>&nbsp;</span>
+            <button class="btn btn-primary" ng-click="mainController.searchMenu(mainController.searchDescription)">Narrow It Down For Me!</button>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="text-center" ng-if="mainController.dataLoading">
+          <h3>Please wait...</h3>
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="text-center" ng-if="mainController.errorMessage !== ''">
+            <h3>{{ mainController.errorMessage }}</h3>
+          </div>
+
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="item in mainController.items">
+              <menu-item item="item" index="$index" on-remove="mainController.removeItem(index)" />
+            </li>
+          </ul>
+      </div>
+    </div>
+
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+  </body>
+</html>
