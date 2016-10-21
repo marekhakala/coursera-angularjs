@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <a ui-sref="home">Home</a> &gt;
+        <span>Categories</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <hr />
+  </div>
+
+  <div class="row">
+    <div ng-repeat="category in categoriesController.categories">
+      <category-item item="category"></category-item>
+    </div>
+  </div>
+</div>
